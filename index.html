@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tribute to a Mentor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Crimson+Text:wght@400;600;700&family=Raleway:wght@300;400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #e67e22;
+            --gold-accent: #f39c12;
+            --light-accent: #ecf0f1;
+            --dark-bg: #1a1a1a;
+            --card-bg: rgba(236, 240, 241, 0.05);
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --text-primary: #ecf0f1;
+            --text-secondary: #95a5a6;
+            --border-color: rgba(236, 240, 241, 0.1);
+            --footer-bg: #0c0c0c;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar - New Design */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(44, 62, 80, 0.2);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--accent-color) 0%, var(--gold-accent) 100%);
+            border-radius: 5px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, var(--gold-accent) 0%, var(--accent-color) 100%);
+            box-shadow: 0 0 10px rgba(230, 126, 34, 0.5);
+        }
+
+        /* Firefox Scrollbar */
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-color) rgba(44, 62, 80, 0.2);
+        }
+
+        /* New Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 50%, #0f0f0f 100%);
+            overflow: hidden;
+        }
+
+        .geometric-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            background-image: 
+                linear-gradient(30deg, var(--accent-color) 12%, transparent 12.5%, transparent 87%, var(--accent-color) 87.5%, var(--accent-color)),
+                linear-gradient(150deg, var(--accent-color) 12%, transparent 12.5%, transparent 87%, var(--accent-color) 87.5%, var(--accent-color)),
+                linear-gradient(30deg, var(--accent-color) 12%, transparent 12.5%, transparent 87%, var(--accent-color) 87.5%, var(--accent-color)),
+                linear-gradient(150deg, var(--accent-color) 12%, transparent 12.5%, transparent 87%, var(--accent-color) 87.5%, var(--accent-color));
+            background-size: 80px 140px;
+            animation: patternMove 20s linear infinite;
+        }
+
+        @keyframes patternMove {
+            from { transform: translate(0, 0); }
+            to { transform: translate(80px, 140px); }
+        }
+
+        .floating-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--gold-accent);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: particleFloat 15s infinite linear;
+        }
+
+        @keyframes particleFloat {
+            from {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            to {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        /* Hero Section - New Design */
+        .hero-section {
+            padding: 5rem 0;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(44, 62, 80, 0.9) 0%, rgba(52, 73, 94, 0.9) 100%);
+            backdrop-filter: blur(10px);
+            border-bottom: 3px solid var(--accent-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23e67e22" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,138.7C960,139,1056,117,1152,112C1248,107,1344,117,1392,122.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+            opacity: 0.3;
+        }
+
+        .hero-title {
+            font-family: 'Crimson Text', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            letter-spacing: 2px;
+        }
+
+        .hero-subtitle {
+            font-family: 'Raleway', sans-serif;
+            font-size: 1.4rem;
+            color: var(--light-accent);
+            position: relative;
+            z-index: 1;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        /* Main Container */
+        .tribute-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            flex: 1;
+        }
+
+        /* Profile Section - New Design */
+        .profile-section {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            margin: 4rem 0;
+            padding: 3rem;
+            background: var(--card-bg);
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(5px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--accent-color);
+        }
+
+        .profile-image {
+            width: 280px;
+            height: 280px;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 3px solid var(--accent-color);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+            filter: grayscale(20%);
+        }
+
+        .profile-image:hover {
+            transform: scale(1.02);
+            filter: grayscale(0%);
+            box-shadow: 0 20px 40px rgba(230, 126, 34, 0.3);
+        }
+
+        .profile-content {
+            flex: 1;
+        }
+
+        .profile-name {
+            font-family: 'Crimson Text', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .profile-name::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--accent-color);
+        }
+
+        .profile-description {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        /* Section Styles - New Design */
+        .section {
+            margin: 3rem 0;
+            padding: 2.5rem;
+            background: var(--card-bg);
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(5px);
+            position: relative;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-color), transparent);
+        }
+
+        .section-title {
+            font-family: 'Crimson Text', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--accent-color);
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: var(--gold-accent);
+        }
+
+        .section-content {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: var(--text-secondary);
+            text-align: justify;
+        }
+
+        /* Qualities Grid - New Design */
+        .qualities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+
+        .quality-card {
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(44, 62, 80, 0.5) 0%, rgba(52, 73, 94, 0.5) 100%);
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quality-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(230, 126, 34, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .quality-card:hover::before {
+            left: 100%;
+        }
+
+        .quality-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+            box-shadow: 0 10px 30px rgba(230, 126, 34, 0.2);
+        }
+
+        .quality-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--gold-accent);
+        }
+
+        .quality-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            font-family: 'Crimson Text', serif;
+        }
+
+        .quality-description {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Memories Gallery - New Design */
+        .memories-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .memory-card {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            height: 220px;
+        }
+
+        .memory-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            border-color: var(--accent-color);
+        }
+
+        .memory-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+            filter: brightness(0.8);
+        }
+
+        .memory-card:hover .memory-img {
+            transform: scale(1.1);
+            filter: brightness(1);
+        }
+
+        .memory-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem;
+            background: linear-gradient(to top, rgba(26, 26, 26, 0.95), transparent);
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .memory-card:hover .memory-overlay {
+            transform: translateY(0);
+        }
+
+        .memory-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            font-family: 'Raleway', sans-serif;
+        }
+
+        /* Quote Section - New Design */
+        .quote-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            border-radius: 10px;
+            padding: 3rem;
+            text-align: center;
+            margin: 3rem 0;
+            position: relative;
+            border: 2px solid var(--accent-color);
+        }
+
+        .quote-section::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            font-size: 6rem;
+            color: var(--accent-color);
+            font-family: 'Crimson Text', serif;
+            opacity: 0.3;
+        }
+
+        .quote-text {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.8rem;
+            font-style: italic;
+            color: var(--light-accent);
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+            line-height: 1.6;
+        }
+
+        .quote-author {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--gold-accent);
+            font-family: 'Raleway', sans-serif;
+        }
+
+        /* New Footer Design */
+        footer {
+            background: linear-gradient(135deg, var(--footer-bg) 0%, #1a1a1a 100%);
+            border-top: 3px solid var(--accent-color);
+            padding: 0;
+            margin-top: auto;
+            position: relative;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+
+        .footer-left {
+            background: linear-gradient(135deg, rgba(44, 62, 80, 0.9) 0%, rgba(52, 73, 94, 0.9) 100%);
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-left::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="%23e67e22" stroke-width="0.5" opacity="0.1"/></svg>');
+            background-size: 20px 20px;
+        }
+
+        .footer-right {
+            background: var(--footer-bg);
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .footer-right::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(230, 126, 34, 0.1) 0%, transparent 70%);
+        }
+
+        .footer-logo {
+            font-family: 'Crimson Text', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--gold-accent);
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-title {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0.8rem 1.2rem;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-link::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 0;
+            height: 100%;
+            background: var(--accent-color);
+            transition: width 0.3s ease;
+            z-index: -1;
+        }
+
+        .footer-link:hover::before {
+            width: 100%;
+        }
+
+        .footer-link:hover {
+            color: var(--text-primary);
+            transform: translateX(5px);
+            border-color: var(--accent-color);
+        }
+
+        .footer-link i {
+            font-size: 1.2rem;
+            color: var(--gold-accent);
+        }
+
+        .footer-bottom {
+            grid-column: 1 / -1;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 1.5rem;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-copyright {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-heart {
+            color: var(--accent-color);
+            animation: heartbeat 1.5s ease infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .profile-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-image {
+                width: 200px;
+                height: 200px;
+            }
+
+            .qualities-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .memories-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .quote-text {
+                font-size: 1.4rem;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-left, .footer-right {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .profile-name {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="geometric-pattern"></div>
+        <div class="floating-particles" id="floatingParticles"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="hero-section">
+        <h1 class="hero-title">Tribute to a Mentor</h1>
+        <p class="hero-subtitle">Honoring a Legacy of Excellence and Wisdom</p>
+    </header>
+
+    <!-- Main Container -->
+    <main class="tribute-container">
+        <!-- Profile Section -->
+        <section class="profile-section">
+            <img src="https://picsum.photos/seed/mentor456/280/280.jpg" alt="Mentor" class="profile-image">
+            <div class="profile-content">
+                <h2 class="profile-name">Michael Thompson</h2>
+                <p class="profile-description">
+                    In the journey of life, we encounter few individuals who truly shape our destiny, 
+                    and Michael Thompson stands as a beacon of inspiration in my life. His unwavering 
+                    dedication to excellence, profound wisdom, and genuine compassion have transformed 
+                    not just my career, but my entire perspective on life. He embodies the rare combination 
+                    of intellectual brilliance and emotional intelligence that makes him not just a mentor, 
+                    but a life-changing force.
+                </p>
+                <p class="profile-description">
+                    Every conversation with Michael is a masterclass in leadership and humanity. He has 
+                    taught me that true success isn't measured by achievements alone, but by the lives 
+                    we touch and the positive impact we create. His guidance has been the compass that 
+                    has navigated me through both calm waters and stormy seas of professional challenges.
+                </p>
+            </div>
+        </section>
+
+        <!-- What I Admire Section -->
+        <section class="section">
+            <h2 class="section-title">What I Admire Most</h2>
+            <div class="section-content">
+                <p>
+                    Michael's ability to see potential where others see limitations is truly extraordinary. 
+                    He has an innate talent for recognizing the unique strengths in people and nurturing them 
+                    to fruition. His mentorship style is not about providing answers, but about asking the 
+                    right questions that lead to self-discovery and growth.
+                </p>
+                <br>
+                <p>
+                    I deeply admire his integrity and the consistency of his values. In a world where 
+                    compromise is common, Michael stands firm in his principles, leading by example in every 
+                    aspect of his life. His ethical compass has been a guiding light, teaching me that true 
+                    leadership is built on a foundation of trust, respect, and unwavering moral character.
+                </p>
+                <br>
+                <p>
+                    Most profoundly, I admire his humility despite his tremendous success. He carries his 
+                    achievements with grace and never hesitates to acknowledge the contributions of others. 
+                    This quality has taught me that true greatness lies not in self-promotion, but in lifting 
+                    others as we climb.
+                </p>
+            </div>
+        </section>
+
+        <!-- Qualities Section -->
+        <section class="section">
+            <h2 class="section-title">Exemplary Qualities</h2>
+            <div class="qualities-grid">
+                <div class="quality-card">
+                    <div class="quality-icon">🎯</div>
+                    <h3 class="quality-title">Visionary Leadership</h3>
+                    <p class="quality-description">
+                        His ability to see the bigger picture and inspire others to work towards a common goal 
+                        has transformed teams and organizations. He leads with clarity and purpose.
+                    </p>
+                </div>
+                <div class="quality-card">
+                    <div class="quality-icon">🧠</div>
+                    <h3 class="quality-title">Intellectual Depth</h3>
+                    <p class="quality-description">
+                        His profound knowledge and analytical thinking have been invaluable in solving complex 
+                        problems. He approaches challenges with wisdom and strategic insight.
+                    </p>
+                </div>
+                <div class="quality-card">
+                    <div class="quality-icon">🤝</div>
+                    <h3 class="quality-title">Mentorship Excellence</h3>
+                    <p class="quality-description">
+                        He invests time and energy in developing others, sharing knowledge generously and 
+                        creating opportunities for growth. His mentorship has launched countless careers.
+                    </p>
+                </div>
+                <div class="quality-card">
+                    <div class="quality-icon">⚖️</div>
+                    <h3 class="quality-title">Unwavering Integrity</h3>
+                    <p class="quality-description">
+                        His ethical standards are uncompromising. He demonstrates that success and integrity 
+                        are not mutually exclusive but essential companions.
+                    </p>
+                </div>
+                <div class="quality-card">
+                    <div class="quality-icon">💪</div>
+                    <h3 class="quality-title">Resilient Spirit</h3>
+                    <p class="quality-description">
+                        He faces adversity with courage and emerges stronger. His resilience has inspired many 
+                        to persevere through their own challenges with determination.
+                    </p>
+                </div>
+                <div class="quality-card">
+                    <div class="quality-icon">🌟</div>
+                    <h3 class="quality-title">Humility</h3>
+                    <p class="quality-description">
+                        Despite his accomplishments, he remains humble and approachable. He treats everyone 
+                        with respect and values diverse perspectives and contributions.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Memories Gallery -->
+        <section class="section">
+            <h2 class="section-title">Cherished Moments</h2>
+            <div class="memories-gallery">
+                <div class="memory-card">
+                    <img src="https://picsum.photos/seed/moment1/400/300.jpg" alt="Moment 1" class="memory-img">
+                    <div class="memory-overlay">
+                        <h3 class="memory-title">First Meeting</h3>
+                    </div>
+                </div>
+                <div class="memory-card">
+                    <img src="https://picsum.photos/seed/moment2/400/300.jpg" alt="Moment 2" class="memory-img">
+                    <div class="memory-overlay">
+                        <h3 class="memory-title">Strategic Planning</h3>
+                    </div>
+                </div>
+                <div class="memory-card">
+                    <img src="https://picsum.photos/seed/moment3/400/300.jpg" alt="Moment 3" class="memory-img">
+                    <div class="memory-overlay">
+                        <h3 class="memory-title">Team Success</h3>
+                    </div>
+                </div>
+                <div class="memory-card">
+                    <img src="https://picsum.photos/seed/moment4/400/300.jpg" alt="Moment 4" class="memory-img">
+                    <div class="memory-overlay">
+                        <h3 class="memory-title">Conference Speaking</h3>
+                    </div>
+                </div>
+                <div class="memory-card">
+                    <img src="https://picsum.photos/seed/moment5/400/300.jpg" alt="Moment 5" class="memory-img">
+                    <div class="memory-overlay">
+                        <h3 class="memory-title">Mentoring Session</h3>
+                    </div>
+                </div>
+                <div class="memory-card">
+                    <img src="https://picsum.photos/seed/moment6/400/300.jpg" alt="Moment 6" class="memory-img">
+                    <div class="memory-overlay">
+                        <h3 class="memory-title">Celebrating Achievement</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quote Section -->
+        <section class="quote-section">
+            <p class="quote-text">
+                "The mark of a great leader is not how many followers you have, 
+                but how many leaders you create."
+            </p>
+            <p class="quote-author">- Michael Thompson</p>
+        </section>
+
+        <!-- Final Message -->
+        <section class="section">
+            <h2 class="section-title">A Heartfelt Tribute</h2>
+            <div class="section-content">
+                <p>
+                    To Michael, your impact on my life extends far beyond professional guidance. You have 
+                    been a role model, a confidant, and a source of unwavering support. Your belief in my 
+                    potential has given me the courage to pursue dreams I once thought impossible. The lessons 
+                    you've imparted will resonate throughout my life and career.
+                </p>
+                <br>
+                <p>
+                    Thank you for seeing the leader in me before I saw it myself, for challenging me to be 
+                    better, and for demonstrating through your own life what it means to lead with purpose, 
+                    integrity, and compassion. Your legacy is not just in the achievements you've accomplished, 
+                    but in the countless lives you've transformed through your mentorship and example.
+                </p>
+                <br>
+                <p style="text-align: center; font-style: italic; color: var(--accent-color);">
+                    With deepest respect and eternal gratitude,
+                    <br>
+                    Forever inspired by your wisdom and leadership.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- New Footer Design -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-left">
+                <div class="footer-logo">Legacy Tribute</div>
+                <div class="footer-name">Created by Syed Ali Hamza</div>
+                <div class="footer-title">Honoring Excellence and Inspiration</div>
+            </div>
+            
+            <div class="footer-right">
+                <div class="footer-title">Connect With Me</div>
+                <div class="footer-links">
+                    <a href="mailto:syedalihamzanaqvi06@gmail.com" class="footer-link">
+                        <i class="fas fa-envelope"></i>
+                        Email
+                    </a>
+                    <a href="tel:+923140728850" class="footer-link">
+                        <i class="fas fa-phone"></i>
+                        Phone Number
+                    </a>
+                    <a href="https://github.com/syedalihamza06/" class="footer-link">
+                        <i class="fab fa-github"></i>
+                        Git Hub
+                    </a>
+                    <a href="https://www.linkedin.com/in/syedalihamza06/" class="footer-link">
+                        <i class="fab fa-linkedin-in"></i>
+                        Linkedin
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="footer-copyright">
+                © 2025. All rights reserved.
+            </div>
+            <div class="footer-copyright">
+                Crafted with <span class="footer-heart">❤</span> and admiration
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Create floating particles
+        function createFloatingParticles() {
+            const container = document.getElementById('floatingParticles');
+            
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        // Smooth scroll for any internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeIn 0.8s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('.section, .profile-section, .quote-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            createFloatingParticles();
+        });
+    </script>
+</body>
+</html>
